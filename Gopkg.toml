@@ -4,6 +4,7 @@ required = [
   "k8s.io/code-generator/cmd/informer-gen",
   "k8s.io/code-generator/cmd/lister-gen",
   "k8s.io/code-generator/cmd/defaulter-gen",
+  "k8s.io/kube-openapi/cmd/openapi-gen",
 ]
 
 [prune]
@@ -14,6 +15,12 @@ required = [
   [[prune.project]]
     name = "k8s.io/code-generator"
     non-go = false
+    unused-packages = false
+
+  [[prune.project]]
+    name = "github.com/argoproj/argo"
+    non-go = false
+    go-tests = false
     unused-packages = false
 
 [[constraint]]
@@ -44,7 +51,7 @@ required = [
 
 [[constraint]]
   name = "k8s.io/client-go"
-  branch = "release-10.0"
+  branch = "release-11.0"
 
 [[constraint]]
   name = "github.com/stretchr/testify"
@@ -83,4 +90,3 @@ required = [
 [[constraint]]
   name = "gopkg.in/jcmturner/gokrb5.v5"
   version = "5.3.0"
-
